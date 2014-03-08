@@ -107,7 +107,7 @@ class Controller
         return isset($_REQUEST[$key]) ? $_REQUEST[$key] : $default;
     }
 
-    public function renderJson($code)
+    public function renderJson($code = 0)
     {
         $ret['code'] = $code;
         if (func_num_args() == 2) {

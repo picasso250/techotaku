@@ -6,16 +6,20 @@
  */
 ?>
 <div class="index">
-  <ul>
+  <ul class="nav">
     <li>logo</li>
-    <li>submit</li>
+    <li>
+      <a href="/submit">submit</a>
+    </li>
   </ul>
 
-  <ul>
+  <ul class="news-list">
     <?php foreach ($this->news as $key => $value): ?>
       <li>
         <button class="upvote-btn" data-id="<?= $value->id ?>">赞</button>
-        <h2><?= $value->title ?></h2>
+        <h2>
+          <a target="_blank" href="<?= $value->url ?>"><?= $value->title ?></a>
+        </h2>
         <span><?= $value->getSite() ?></span>
         <span><?= $value->created ?></span>
         <span><?= $value->username ?></span>

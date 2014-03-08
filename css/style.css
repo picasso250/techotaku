@@ -4,216 +4,31 @@
 
 /* all */
 body {
-    background-color: #222222;
+    background-color: #E9E7E2;
 }
-.page-content {
-    background-color: #f0f0f0;
+
+.nav {
+    list-style-type: none;
 }
-.header {
-    background: #202020;
-    padding: 1px;
-    border-bottom: 1px solid #fff;
+.nav li {
+    float: left;
 }
-.header h1 {
-    margin-top: 8px;
-    margin-left: 3px;
+
+.news-list {
+    list-style-type: none;
+    clear: both;
+    position: relative;
 }
-.header h1 a {
-    color: #fff;
-    text-decoration: none;
-}
-.header .control {
-    color: #bbb;
-}
-.header .control .name-wrapper {
-    text-decoration: none;
-}
-.header .control .name-wrapper img {
-    max-width: 30px;
-    max-height: 30px;
-}
-.header .control .name-wrapper .name {
-    font-weight: bold;
-    color: #bbb;
-}
-.header .control .name-wrapper:hover .name {
-    color: #EBEBEB;
-}
-.header .control .role-list-btn {
-    color: #bbb;
-    margin-left: 30px;
+
+.news-list li {
+    margin-left: 11px;
     margin-top: 10px;
-    margin-right: 10px;
-}
-.footer {
-    padding: 1px;
-    padding-top: 10px;
-}
-.footer .c {
-    text-align: center;
-}
-.footer a {
-    text-decoration: none;
-    color: #bbb;
-}
-
-/* index */
-.index .twit-list-div {
-    padding-top: 20px;
-}
-.index .post-box {
-    padding-top: 20px;
-    padding-bottom: 40px;
-}
-.index .post-box .left-col {
-    width: 60px;
-    float: left;
-    position: relative;
-}
-.index .post-box .mid-col {
-    margin-right: 70px;
-}
-.index .post-box .mid-col textarea {
-    height: 60px;
-}
-.index .post-box .right-col .btn {
-    float: right;
-    width: 60px;
-    height: 60px;
-    position: relative;
-}
-
-.index .post-box .right-col {
-    margin-left: 70px;
-}
-
-/* twit */
-.twit .left-col {
-    width: 60px;
-    position: relative;
-    float: left;
-}
-.twit .right-col {
-    margin-left: 68px;
-    background: #fff;
-    border-bottom: 1px solid #97bedd;
-    box-shadow: 0 1px 3px #849aa7;
-    margin-bottom: 20px;
-}
-.twit .name-bar {
-    padding: 6px;
-    padding-top: 8px;
-    padding-left: 14px;
-    border-bottom: 1px solid #c7c1c1;
-    background-color: #f6f4f4;
-}
-.twit .name-bar .name {
-    text-decoration: none;
-    font-weight: bold;
-}
-.twit .name-bar .time {
-    color: #888;
-}
-.twit .content {
-    padding: 10px;
-}
-.twit .content .text {
-    line-height: 170%;
-}
-.twit .control {
-    padding-right: 10px;
-    padding-bottom: 10px;
-}
-
-/* twit comment */
-.twit-comment {
-    background-color: #f6f4f4;
-}
-.twit-comment li {
-    margin: 0px;
-    padding: 3px;
-    border-top: 1px solid #C0C0C0
-}
-.twit-comment .name-wrap {
-    text-decoration: none;
-}
-.twit-comment .avatar {
-    width: 20px;
-}
-
-/* modal */
-#commentForm textarea {
     margin-bottom: 10px;
 }
 
-/* role list */
-.role-list {
-    padding-top: 10px;
-}
-.role-list li {
-    padding: 6px;
-    background: #fff;
-    box-shadow: 0 0px 2px #849aa7;
-    margin-bottom: 17px;
-}
-.role-list .info .name {
-    padding-left: 5px;
-    font-weight: bold;
-}
-.role-list .info a:hover {
-    text-decoration: none;
-}
-.role-list .info .img-wrapper img {
-    max-width: 120px;
-    max-height: 120px;
+.upvote-btn {
+    position: absolute;
+    left: 10px;
 }
 
-/* role */
-.role-view {
-    padding: 20px;
-}
-.role-view .nav-bar {
-    margin-bottom: 20px;
-}
-.role-view .avatar-wrapper {
-    position: relative;
-    max-width: 300px;
-}
-.role-view .avatar-wrapper img {
-}
-.role-view .avatar-wrapper .change-avatar-btn {
-    visibility: hidden;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    text-align: center;
-    cursor: pointer;
-    background-color: rgba(255,255,255,0.7);
-}
-.role-view .avatar-wrapper:hover .change-avatar-btn {
-    visibility: visible;
-}
-.role-view .avatar-wrapper .change-avatar-btn:hover {
-}
-#imgInp {
-    visibility: hidden;
-}
-#msgUpload {
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 60px;
-    text-align: center;
-    background-color: rgba(255,255,255,0.7);
-}
-.role-view .detail-info {
-    margin-bottom: 20px;
-}
-.role-view .detail-info .name {
-    font-weight: bold;
-}
-.role-view .detail-info .recent {
-    color: #333;
-}
 

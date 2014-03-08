@@ -71,7 +71,7 @@ class Entity
         if ($this->id()) {
             $this->model->updateEntity($this);
         } else {
-            $this->id = $this->data[$this->model->pkey()] = $this->model->insertEntity($this);
+            $this->id = $this->data[$this->model->pkey] = $this->model->insertEntity($this);
         }
         $this->clean();
         return $this;

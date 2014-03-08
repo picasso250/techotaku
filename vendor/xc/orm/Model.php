@@ -18,7 +18,11 @@ class Model extends Sql
         parent::__construct();
         $classname = preg_replace('/\bmodel\b/', 'entity', get_called_class());
         $classname = preg_replace('/Model$/', '', $classname);
-        $this->proto = new $classname;
+        if (class_exists($classname)) {
+            $this->proto = new $classname;
+        } else {
+            $this->proto = new Entity;
+        }
         $this->proto->model = $this;
     }
 
@@ -45,18 +49,18 @@ class Model extends Sql
      * @param \ptf\IdEntity $entity
      * @return type
      */
-    public function insertEntity(IdEntity $entity)
+    public function insertEntity( $entity)
     {
-        PdoWrapper::insert($this->table(), $entity->toArray());
+        PdoWrapper::insert($this->table, $entity->toArray());
         return PdoWrapper::lastInsertId();
     }
 
     /**
      * 更新
-     * @param \ptf\IdEntity $entity
+     * @param \ptf\ $entity
      * @return int
      */
-    public function updateEntity(IdEntity $entity)
+    public function updateEntity( $entity)
     {
         $set = $entity->dirtyArray();
         if ($set) {

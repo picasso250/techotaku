@@ -61,7 +61,7 @@ class PdoWrapper
      * 
      * 对应 sql 中的 insert 语句
      */
-    public function insert($table, $data) 
+    public static function insert($table, $data) 
     {
         $keys = array_keys($data);
         $keystr = implode(', ', array_map(function ($k) {return "`$k`";}, $keys));

@@ -8,15 +8,17 @@ spl_autoload_register(function ($name) {
             $f = preg_replace($regex, "$value", $name).'.php';
             $f = str_replace('\\', '/', $f);
             if (!file_exists($f)) {
-                throw new Exception("class $name not found($f)", 1);
+                Func::log("class $name not found($f)", Func::LOG_LEVEL_NOTICE);
+            } else {
+                require $f;
             }
-            require $f;
             return;
         }
     }
     $f = __DIR__.'/'.str_replace('\\', '/', $name).'.php';
     if (!file_exists($f)) {
-        throw new Exception("class $name not found($f)", 1);
+        Func::log("class $name not found($f)", Func::LOG_LEVEL_NOTICE);
+    } else {
+        require $f;
     }
-    require $f;
 });

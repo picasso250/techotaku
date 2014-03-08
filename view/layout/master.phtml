@@ -13,16 +13,10 @@
     <meta name="keywords" content="<?php echo implode(', ', $this->page->keywords); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="<?php echo ('/css/bootstrap.min.css') ?>">
     <link rel="stylesheet" href="/css/style.css">
 
   </head>
   <body>
-    <div class="append-parent"><!-- append parent -->
-    </div>
-    <div class="header"><!-- head -->
-      <?php $this->renderBlock('layout/header'); ?>
-    </div>
     <div class="page-content clearfix">
       <?php $this->yieldView(); ?>
     </div>
@@ -31,7 +25,6 @@
     </div>
 
     <script src="<?php echo ('/js/jquery-2.1.0.min.js') ?>"></script>
-    <script src="<?php echo ('/js/bootstrap.min.js') ?>"></script>
     <script src="/js/every.js"></script>
 
     <?php if (DEPLOY_ENV == 'prd'): ?>

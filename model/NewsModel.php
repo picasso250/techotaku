@@ -3,20 +3,25 @@
 namespace model;
 
 use xc\orm\Model;
+use model\UserModel;
 
 /**
  * 帖子
  *
  * @author  ryan <cumt.xiaochi@gmail.com>
- * @created Jul 17, 2012 3:15:17 PM
  */
 class NewsModel extends Model {
 
     public $table = 'news';
 
     public function add ($args) {
+        $userModel = new UserModel;
+        $user = $userModel->findOrCreate(trim($args['username']));
 
         $t = $this->create();
+        $t->url = trim($args['url']);
+        $t->title = trim($args['url']);
+        $t->user = $user->id;
         $t->created = $this->now();
         $t->save();
 
