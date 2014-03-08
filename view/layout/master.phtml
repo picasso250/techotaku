@@ -1,0 +1,52 @@
+<?php
+/**
+ * @file    master
+ * @author  ryan <cumt.xiaochi@gmail.com>
+ */
+?>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>技术宅话</title>
+    <meta name="description" content="<?php echo $this->page->description; ?>" />
+    <meta name="keywords" content="<?php echo implode(', ', $this->page->keywords); ?>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="<?php echo ('/css/bootstrap.min.css') ?>">
+    <link rel="stylesheet" href="/css/style.css">
+
+  </head>
+  <body>
+    <div class="append-parent"><!-- append parent -->
+    </div>
+    <div class="header"><!-- head -->
+      <?php $this->renderBlock('layout/header'); ?>
+    </div>
+    <div class="page-content clearfix">
+      <?php $this->yieldView(); ?>
+    </div>
+    <div class="footer"><!-- footer -->
+      <?php $this->renderBlock('layout/footer'); ?>
+    </div>
+
+    <script src="<?php echo ('/js/jquery-2.1.0.min.js') ?>"></script>
+    <script src="<?php echo ('/js/bootstrap.min.js') ?>"></script>
+    <script src="/js/every.js"></script>
+
+    <?php if (DEPLOY_ENV == 'prd'): ?>
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-34837342-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+    <?php endif; ?>
+
+  </body>
+</html>

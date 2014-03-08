@@ -1,0 +1,27 @@
+<?php
+/**
+ * @file    index
+ * @author  ryan <cumt.xiaochi@gmail.com>
+ * @created Jul 17, 2012 9:51:11 AM
+ */
+?>
+<div class="index">
+  <ul>
+    <li>logo</li>
+    <li>submit</li>
+  </ul>
+
+  <ul>
+    <?php foreach ($this->news as $key => $value): ?>
+      <li>
+        <button class="upvote-btn" data-id="<?= $value->id ?>">赞</button>
+        <h2><?= $value->title ?></h2>
+        <span><?= $value->getSite() ?></span>
+        <span><?= $value->created ?></span>
+        <span><?= $value->username ?></span>
+        <span id="Point<?= $value->id ?>"><?= $value->point ?></span>
+        <a href="">讨论</a>
+      </li>
+    <?php endforeach ?>
+  </ul>
+</div>
