@@ -18,14 +18,20 @@ class NewsModel extends Model {
         $userModel = new UserModel;
         $user = $userModel->findOrCreate(trim($args['username']));
 
-        $t = $this->create();
-        $t->url = trim($args['url']);
-        $t->title = trim($args['url']);
-        $t->user = $user->id;
-        $t->created = $this->now();
-        $t->save();
+        $n = $this->create();
+        $n->url = trim($args['url']);
+        $arr = parse_url($n->url);
+        if (!isset($arr['host'])) {
+            throw new \Exception("no host in url $n->url", 1);
+        }
+        $n->host = $arr['host'];
+        $n->title = trim($args['url']);
+        $n->user = $user->id;
+        $n->detail = $args['detail'];
+        $n->created = $this->now();
+        $n->save();
 
-        return $t;
+        return $n;
     }
 
     public function getListForIndex($n = 10, $p = 1) {

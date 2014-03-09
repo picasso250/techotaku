@@ -154,6 +154,7 @@ class Sql
             $value = $value->{$value->pkey};
         }
         $this->wheres[] = array("$key = ?", array($value));
+        return $this;
     }
 
     // where id in (3, 4, 5)

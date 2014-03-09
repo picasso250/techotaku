@@ -15,7 +15,7 @@ class UserModel extends Model {
     public $table = 'user';
 
     public function findOrCreate ($username) {
-        $user = $this->where('username', $username)->findOne();
+        $user = $this->where('name', $username)->findOne();
         if ($user) {
             return $user;
         }

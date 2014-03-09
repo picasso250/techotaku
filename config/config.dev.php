@@ -2,7 +2,9 @@
 
 return array(
     'db' => array(
-        'dsn' => 'sqlite:f:/db/techotaku',
+        'dsn' => 'mysql:host=localhost;dbname=techotaku',
+        'username' => 'root',
+        'password' => 'xiaochi',
         'debug' => true,
         'logging' => true,
     )
