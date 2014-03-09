@@ -23,6 +23,10 @@ class News extends Entity {
         return $arr['host'];
     }
 
+    public function getUrl() {
+        return $this->url ?: "/talk/$this->id";
+    }
+
     /**
      * 获得帖子的评论
      * @return array

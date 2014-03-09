@@ -29,11 +29,10 @@ body {
     display: inline-block;
 }
 
-.news-list h2 {
+.news-item h2 {
     display: inline-block;
 }
-.news-list .site {
+.news-item .site {
 }
-.new-lists .detail-wrap {
-    clear: both;
+.news-items .detail-wrap {
 }

@@ -8,6 +8,6 @@ return array(
     // 网址=>控制器
     'routers' => array(
         // array('GET', '/about', array('Index', 'about')),
-        // array('GET', '/role/[:id]', array('Role', 'view')),
+        array('GET', '/talk/[:id]', array('News' => 'view')),
     ),
 );

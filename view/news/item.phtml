@@ -1,0 +1,15 @@
+<button class="upvote-btn" data-id="<?= $n->id ?>">赞</button>
+<h2>
+  <a target="_blank" href="<?= $n->getUrl() ?>"><?= $n->title ?></a>
+</h2>
+
+<?php if ($n->url): ?>
+<span class="site">(<?= $n->getSite() ?>)</span>
+<?php endif ?>
+
+<div class="detail-wrap">
+  <span><?= $n->readableTime() ?></span>
+  <span><?= $n->username ?> 发</span>
+  <span id="Point<?= $n->id ?>"><?= $n->point ?></span>
+  <a href="">讨论</a>
+</div>

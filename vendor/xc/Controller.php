@@ -148,6 +148,8 @@ class Controller
      */
     public function renderBlock($tpl, $data = array())
     {
+        extract($this->vars); // you do not change things in view
+        extract($data);
         foreach ($data as $key => $value) {
             $this->{$key} = $value;
         }

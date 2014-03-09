@@ -15,18 +15,8 @@
 
   <ul class="news-list">
     <?php foreach ($this->news as $key => $value): ?>
-      <li>
-        <button class="upvote-btn" data-id="<?= $value->id ?>">赞</button>
-        <h2>
-          <a target="_blank" href="<?= $value->url ?>"><?= $value->title ?></a>
-        </h2>
-        <span class="site">(<?= $value->getSite() ?>)</span>
-        <div class="detail-wrap">
-          <span><?= $value->readableTime() ?></span>
-          <span><?= $value->name ?> 发</span>
-          <span id="Point<?= $value->id ?>"><?= $value->point ?></span>
-          <a href="">讨论</a>
-        </div>
+      <li class="news-item">
+        <?php $this->renderBlock('news/item', array('n' => $value)) ?>
       </li>
     <?php endforeach ?>
   </ul>

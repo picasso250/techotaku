@@ -180,4 +180,9 @@ class Entity
     {
         return $this->get($key);
     }
+
+    public function __isset($key)
+    {
+        return isset($this->data[$key]);
+    }
 }

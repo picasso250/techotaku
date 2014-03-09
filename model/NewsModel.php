@@ -19,13 +19,18 @@ class NewsModel extends Model {
         $user = $userModel->findOrCreate(trim($args['username']));
 
         $n = $this->create();
-        $n->url = trim($args['url']);
-        $arr = parse_url($n->url);
-        if (!isset($arr['host'])) {
-            throw new \Exception("no host in url $n->url", 1);
-        }
-        $n->host = $arr['host'];
         $n->title = trim($args['title']);
+        if (empty($n->title)) {
+            throw new \Exception("empty title", 1);
+        }
+        $n->url = trim($args['url']);
+        if (($n->url)) {
+            $arr = parse_url($n->url);
+            if (!isset($arr['host'])) {
+                throw new \Exception("no host in url $n->url", 1);
+            }
+            $n->host = $arr['host'];
+        }
         $n->user = $user->id;
         $n->detail = $args['detail'];
         $n->created = $this->now();
