@@ -25,7 +25,7 @@ class NewsModel extends Model {
             throw new \Exception("no host in url $n->url", 1);
         }
         $n->host = $arr['host'];
-        $n->title = trim($args['url']);
+        $n->title = trim($args['title']);
         $n->user = $user->id;
         $n->detail = $args['detail'];
         $n->created = $this->now();

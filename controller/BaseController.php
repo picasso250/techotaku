@@ -18,8 +18,8 @@ class BaseController extends \xc\Controller
         $this->newsModel = new NewsModel;
 
         $this->page = new \stdClass;
-        $this->page->description = '伪博扮演，扮演整个世界';
-        $this->page->keywords = array('伪博','扮演');
+        $this->page->description = 'todo';
+        $this->page->keywords = array('todo','扮演');
 
         $this->layout('layout/master');
     }

@@ -20,11 +20,13 @@
         <h2>
           <a target="_blank" href="<?= $value->url ?>"><?= $value->title ?></a>
         </h2>
-        <span><?= $value->getSite() ?></span>
-        <span><?= $value->created ?></span>
-        <span><?= $value->username ?></span>
-        <span id="Point<?= $value->id ?>"><?= $value->point ?></span>
-        <a href="">讨论</a>
+        <span class="site">(<?= $value->getSite() ?>)</span>
+        <div class="detail-wrap">
+          <span><?= $value->readableTime() ?></span>
+          <span><?= $value->username ?></span>
+          <span id="Point<?= $value->id ?>"><?= $value->point ?></span>
+          <a href="">讨论</a>
+        </div>
       </li>
     <?php endforeach ?>
   </ul>

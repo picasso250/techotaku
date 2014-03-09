@@ -17,7 +17,6 @@ body {
 .news-list {
     list-style-type: none;
     clear: both;
-    position: relative;
 }
 
 .news-list li {
@@ -27,8 +26,14 @@ body {
 }
 
 .upvote-btn {
-    position: absolute;
-    left: 10px;
+    display: inline-block;
 }
 
-
+.news-list h2 {
+    display: inline-block;
+}
+.news-list .site {
+}
+.new-lists .detail-wrap {
+    clear: both;
+}
