@@ -120,7 +120,7 @@ class Controller
     {
         $this->layout = $tpl;
     }
-    
+
     /**
      * 渲染视图
      * @param string $tpl 模版路径
@@ -132,13 +132,25 @@ class Controller
             include "$this->view_root/$this->layout.phtml";
             $this->layout = null;
         } else {
-            include "$this->view_root/$tpl.phtml";
+            $this->yieldView($tpl);
         }
     }
 
-    public function yieldView()
+    public function yieldView($tpl = null)
     {
-        include "$this->view_root/$this->view.phtml";
+        if ($tpl === null) {
+            $tpl = $this->view;
+        }
+        $f = "$this->view_root/$tpl.phtml";
+        $mdf = "$this->view_root/$tpl.md";
+        if (file_exists($f)) {
+            include $f;
+        } elseif (file_exists($mdf)) {
+            $content = file_get_contents($mdf);
+            $content = preg_replace('/(\r\n|^)([^<].+?)\r\n/s', '<p>$2</p>'."\n", $content);
+            $content = preg_replace('/\*\*(.+?)\*\*/s', '<strong>$1</strong>'."\n", $content);
+            echo "$content\n";
+        }
     }
 
     /**

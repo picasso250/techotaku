@@ -3,10 +3,10 @@
 namespace controller;
 
 /**
- * @file    LoginController
+ * @file    WelcomeController
  * @author  ryan <cumt.xiaochi@gmail.com>
  */
-class LoginController extends BaseController
+class WelcomeController extends BaseController
 {
 
     public function indexAction()

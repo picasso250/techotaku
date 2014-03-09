@@ -43,6 +43,6 @@ foreach ($routers as $value) {
 }
 
 $arr = explode('/', $_SERVER['PATH_INFO']);
-$c = isset($arr[1]) && $arr[1] ? $arr[1] : 'Index';
+$c = isset($arr[1]) && $arr[1] ? ucfirst($arr[1]) : 'Index';
 $a = isset($arr[2]) && $arr[2] ? $arr[2] : 'index';
 Func::dispatch($c, $a, $_REQUEST);
