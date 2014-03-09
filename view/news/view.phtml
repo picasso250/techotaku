@@ -1,3 +1,13 @@
 <div class="news-item">
 	<?php $this->renderBlock('news/item') ?>
 </div>
+<ul class="comment-list">
+	<?php foreach ($this->n->getCommentList() as $key => $value): ?>
+		<li>
+			<a href=""><?= $value->username ?></a>
+			<span><?= $value->readableTime() ?></span>
+			<div><?= htmlspecialchars($value->content) ?></div>
+			<a href="">回应</a>
+		</li>
+	<?php endforeach ?>
+</ul>

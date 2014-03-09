@@ -13,6 +13,16 @@ class Model extends Sql
     public $pkey = 'id';
     protected $proto;
 
+    public static function forTable($table)
+    {
+        $m = new self;
+        $m->table = $table;
+        $m->initBuilds();
+        $m->proto = new Entity;
+        $m->proto->model = $m;
+        return $m;
+    }
+
     public function __construct()
     {
         parent::__construct();

@@ -1,12 +1,14 @@
 <?php
 
-use ptf\IdEntity;
+namespace entity;
+
+use xc\orm\Entity;
 
 /**
  * 评论
  * @author  ryan <cumt.xiaochi@gmail.com>
  */
-class Comment extends IdEntity {
+class Comment extends BaseEntity {
     
     /**
      * 获得角色（撰写评论的）
