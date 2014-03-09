@@ -379,7 +379,7 @@ class Sql
         }
 
         if ($columns) {
-            $this->joinColumns($columns, $ti);
+            $this->joinColumns($columns, $a);
         }
         $join = "$method $table ON $on";
         $this->joins[] = $join;
@@ -389,7 +389,8 @@ class Sql
     protected function joinColumns($columns, $table)
     {
         if (empty($this->columns)) {
-            $this->columns[] = "`$this->table`.*";
+            $this_table = $this->alias ?: $this->table;
+            $this->columns[] = "`$this_table`.*";
         }
         if (is_string($columns) && $columns != '*') {
             if ($columns == '*') {
@@ -402,8 +403,8 @@ class Sql
                 if (is_int($key)) {
                     $this->columns[] = $this->joinColumn($value);
                 } else {
-                    $name = $this->joinColumn($key);
-                    $this->columns[] = "$name AS `$value`";
+                    $name = $this->joinColumn($value, $table);
+                    $this->columns[] = "$name AS `$key`";
                 }
             }
         }
