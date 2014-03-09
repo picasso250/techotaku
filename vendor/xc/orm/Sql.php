@@ -551,6 +551,7 @@ class Sql
                 . ($orderBy ? " ORDER BY $orderBy" : '')
                 . $limit . $offset;
         $values = array_merge($whereVals, $havingVals);
+        $this->initBuilds();
         return array($sql, $values);
     }
 

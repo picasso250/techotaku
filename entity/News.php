@@ -14,6 +14,12 @@ use model\CommentModel;
  */
 class News extends BaseEntity {
 
+    public function countComment()
+    {
+        $count = $this->model->where('pid', $this->id)->count();
+        return $count;
+    }
+
     /**
      * 源站
      * @return Role

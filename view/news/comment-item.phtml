@@ -1,4 +1,16 @@
 <button class="upvote-btn" data-id=<?= $c->id ?>>赞</button>
-<a href=""><?= $c->user()->name ?></a>
-<span><?= $c->readableTime() ?></span>
+<div>
+  <a href=""><?= $c->user()->name ?></a>
+  <span><?= $c->readableTime() ?></span>
+  |
+  <a href="/comment/reply?id=<?= $c->id ?>">链接</a>
+  |
+  <a href="">上级</a>
+  <?php if ($in_comment_page): $topic = $c->topic() ?>
+  |
+  评：
+  <a href="/topic/<?= $topic->id ?>"><?= $topic->title ?></a>
+  <?php endif ?>
+</div>
+<span></span>
 <div><?= htmlspecialchars($c->content) ?></div>

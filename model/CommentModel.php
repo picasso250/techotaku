@@ -23,5 +23,12 @@ class CommentModel extends Model {
         $c->save();
     }
 
+    public function getList() {
+        return $this
+            ->where('pid != 0')
+            ->orderBy(array('id' => 'desc'))
+            ->findMany();
+    }
+
 }
 

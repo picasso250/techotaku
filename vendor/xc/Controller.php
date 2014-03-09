@@ -141,15 +141,15 @@ class Controller
         if ($tpl === null) {
             $tpl = $this->view;
         }
-        $f = "$this->view_root/$tpl.phtml";
         $mdf = "$this->view_root/$tpl.md";
-        if (file_exists($f)) {
-            include $f;
-        } elseif (file_exists($mdf)) {
+        if (file_exists($mdf)) {
             $content = file_get_contents($mdf);
             $content = preg_replace('/(\r\n|^)([^<].+?)\r\n/s', '<p>$2</p>'."\n", $content);
             $content = preg_replace('/\*\*(.+?)\*\*/s', '<strong>$1</strong>'."\n", $content);
             echo "$content\n";
+        } else {
+            $f = "$this->view_root/$tpl.phtml";
+            include $f;
         }
     }
 

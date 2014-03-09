@@ -15,15 +15,14 @@
     <?php endif ?>
   </div>
 
-  <ul class="nav">
-    <li>logo</li>
-    <li>
-      <a href="/submit">开新话题</a>
-    </li>
-    <li>
-      <a href="/welcome">欢迎</a>
-    </li>
-  </ul>
+  <div>logo</div>
+  <div class="nav">
+    <a href="/welcome">欢迎</a>
+    |
+    <a href="/comment/">評論</a>
+    |
+    <a href="/submit">开新话题</a>
+  </div>
 
   <ul class="news-list">
     <?php foreach ($this->news as $key => $value): ?>

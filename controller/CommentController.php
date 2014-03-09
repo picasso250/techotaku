@@ -9,6 +9,11 @@ namespace controller;
 class CommentController extends BaseController
 {
 
+    public function indexAction()
+    {
+        $this->comments = $this->commentModel->getList();
+        $this->renderView('comment/list');
+    }
     public function addAction()
     {
         $id = $this->request['id'];
