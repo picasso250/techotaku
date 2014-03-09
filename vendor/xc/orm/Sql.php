@@ -378,7 +378,7 @@ class Sql
             }
         }
 
-        if ($columns) {
+        if ($columns !== null) {
             $this->joinColumns($columns, $a);
         }
         $join = "$method $table ON $on";

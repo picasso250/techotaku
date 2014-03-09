@@ -36,3 +36,7 @@ body {
 }
 .news-items .detail-wrap {
 }
+
+.login-btn-wrap {
+    float: right;
+}

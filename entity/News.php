@@ -28,20 +28,5 @@ class News extends BaseEntity {
         return $this->url ?: "/talk/$this->id";
     }
 
-    /**
-     * 获得帖子的评论
-     * @return array
-     */
-    public function getCommentList()
-    {
-        $commentModel = new CommentModel;
-        return $commentModel
-            ->alias('c')
-            ->join(array('n' => 'news'), array('n.id', '=', 'c.news'), array())
-            ->where(array('n.id' => $this->id))
-            ->orderBy(array('c.id' => 'desc'))
-            ->findMany();
-    }
-
 }
 

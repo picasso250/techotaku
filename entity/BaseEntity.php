@@ -3,12 +3,28 @@
 namespace entity;
 
 use xc\orm\Entity;
+use model\CommentModel;
 
 /**
  * 评论
  * @author  ryan <cumt.xiaochi@gmail.com>
  */
 class BaseEntity extends Entity {
+    /**
+     * 获得帖子的评论
+     * @return array
+     */
+    public function getCommentList()
+    {
+        $commentModel = new CommentModel;
+        $list = $commentModel
+            ->alias('c')
+            ->where(array('c.news' => $this->id))
+            ->orderBy(array('c.id' => 'asc'))
+            ->findMany();
+        return $list;
+    }
+
     /** 
      * translate Y-m-d to xx之前 or 今天XX
      * 

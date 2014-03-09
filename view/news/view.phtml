@@ -1,13 +1,22 @@
 <div class="news-item">
-	<?php $this->renderBlock('news/item') ?>
+  <?php $this->renderBlock('news/item') ?>
 </div>
+
+<form action="/comment/add" method="post">
+  <div>
+    <textarea name="content"></textarea>
+  </div>
+  <button>添加评论</button>
+  <input type="hidden" name="id" value="<?= $this->n->id ?>">
+</form>
+
 <ul class="comment-list">
-	<?php foreach ($this->n->getCommentList() as $key => $value): ?>
-		<li>
-			<a href=""><?= $value->username ?></a>
-			<span><?= $value->readableTime() ?></span>
-			<div><?= htmlspecialchars($value->content) ?></div>
-			<a href="">回应</a>
-		</li>
-	<?php endforeach ?>
+  <?php foreach ($this->n->getCommentList() as $key => $value): ?>
+    <li>
+      <a href=""><?= $value->username ?></a>
+      <span><?= $value->readableTime() ?></span>
+      <div><?= htmlspecialchars($value->content) ?></div>
+      <a href="">回应</a>
+    </li>
+  <?php endforeach ?>
 </ul>

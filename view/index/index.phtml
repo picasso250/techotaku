@@ -6,6 +6,15 @@
  */
 ?>
 <div class="index">
+  <div class="login-btn-wrap">
+    <?php if ($this->currentUserId): ?>
+      <span><?= $this->currentUser->name ?></span>
+      <a href="/login/out">登出</a>
+    <?php else: ?>
+      <a href="/login">登录</a>
+    <?php endif ?>
+  </div>
+
   <ul class="nav">
     <li>logo</li>
     <li>

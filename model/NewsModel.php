@@ -16,7 +16,6 @@ class NewsModel extends Model {
 
     public function add ($args) {
         $userModel = new UserModel;
-        $user = $userModel->findOrCreate(trim($args['username']));
 
         $n = $this->create();
         $n->title = trim($args['title']);
@@ -31,7 +30,7 @@ class NewsModel extends Model {
             }
             $n->host = $arr['host'];
         }
-        $n->user = $user->id;
+        $n->user = $userModel->getCurrentUserId();
         $n->detail = $args['detail'];
         $n->created = $this->now();
         $n->save();
