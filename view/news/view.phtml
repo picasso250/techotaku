@@ -1,5 +1,6 @@
 <div class="news-item">
   <?php $this->renderBlock('news/item') ?>
+  <div class="detail"><?= htmlspecialchars($this->n->content) ?></div>
 </div>
 
 <form action="/comment/add" method="post">
@@ -13,10 +14,10 @@
 <ul class="comment-list">
   <?php foreach ($this->n->getCommentList() as $key => $value): ?>
     <li>
-      <a href=""><?= $value->username ?></a>
-      <span><?= $value->readableTime() ?></span>
-      <div><?= htmlspecialchars($value->content) ?></div>
-      <a href="">回应</a>
+      <?php $this->renderBlock('news/comment-item-wrap', array(
+        'c' => $value,
+        'level' => 0,
+      )) ?> 
     </li>
   <?php endforeach ?>
 </ul>

@@ -4,12 +4,18 @@ namespace entity;
 
 use xc\orm\Entity;
 use model\CommentModel;
+use model\UserModel;
 
 /**
  * 评论
  * @author  ryan <cumt.xiaochi@gmail.com>
  */
 class BaseEntity extends Entity {
+    public function user()
+    {
+        $userModel = new UserModel;
+        return $userModel->findOne($this->user);
+    }
     /**
      * 获得帖子的评论
      * @return array
@@ -19,7 +25,7 @@ class BaseEntity extends Entity {
         $commentModel = new CommentModel;
         $list = $commentModel
             ->alias('c')
-            ->where(array('c.news' => $this->id))
+            ->where(array('c.pid' => $this->id))
             ->orderBy(array('c.id' => 'asc'))
             ->findMany();
         return $list;

@@ -31,7 +31,7 @@ class NewsModel extends Model {
             $n->host = $arr['host'];
         }
         $n->user = $userModel->getCurrentUserId();
-        $n->detail = $args['detail'];
+        $n->content = $args['detail'];
         $n->created = $this->now();
         $n->save();
 

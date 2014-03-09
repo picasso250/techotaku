@@ -1,6 +1,6 @@
 <button class="upvote-btn" data-id="<?= $n->id ?>">赞</button>
 <h2>
-  <a href="<?= $n->getUrl() ?>"><?= $n->title ?></a>
+  <a href="<?= $n->getUrl() ?>"><?= htmlspecialchars($n->title) ?></a>
 </h2>
 
 <?php if ($n->url): ?>
@@ -9,7 +9,7 @@
 
 <div class="detail-wrap">
   <span><?= $n->readableTime() ?></span>
-  <span><?= $n->username ?> 发</span>
+  <span><?= htmlspecialchars($n->user()->name) ?> 发</span>
   <span id="Point<?= $n->id ?>"><?= $n->point ?>分</span>
   <a href="/talk/<?= $n->id ?>">讨论</a>
 </div>

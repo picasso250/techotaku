@@ -1,0 +1,16 @@
+<div class="level<?= $this->level ?>">
+  <?php $this->renderBlock('news/comment-item', array(
+    'c' => $c,
+  )) ?> 
+  <a href="/comment/reply?id=<?= $c->id ?>">回应</a>
+  <ul class="comment-list level<?= $this->level+1 ?>">
+    <?php foreach ($this->c->getCommentList() as $key => $value): ?>
+      <li>
+        <?php $this->renderBlock('news/comment-item-wrap', array(
+          'c' => $value,
+          'level' => $this->level+1,
+        )) ?> 
+      </li>
+    <?php endforeach ?>
+  </ul>
+</div>

@@ -13,18 +13,15 @@ class CommentController extends BaseController
     {
         $id = $this->request['id'];
         $this->commentModel->add(array(
-            'news' => $id,
+            'pid' => $id,
             'content' => $this->request['content'],
         ));
         $this->renderJson();
     }
-    public function reply()
+    public function replyAction()
     {
         $id = $this->request['id'];
-        $this->commentModel->add(array(
-            'news' => $id,
-            'content' => $this->request['content'],
-        ));
-        $this->renderJson();
+        $this->c = $this->commentModel->findOne($id);
+        $this->renderView('news/reply');
     }
 }

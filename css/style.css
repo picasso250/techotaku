@@ -40,3 +40,7 @@ body {
 .login-btn-wrap {
     float: right;
 }
+
+.comment-list {
+    list-style-type: none;
+}

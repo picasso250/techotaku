@@ -1,0 +1,4 @@
+<button class="upvote-btn" data-id=<?= $c->id ?>>赞</button>
+<a href=""><?= $c->user()->name ?></a>
+<span><?= $c->readableTime() ?></span>
+<div><?= htmlspecialchars($c->content) ?></div>

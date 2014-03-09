@@ -1,0 +1,11 @@
+<div>
+  <?php $this->renderBlock('news/comment-item') ?> 
+</div>
+
+<form action="/comment/add" method="post">
+  <div>
+    <textarea name="content"></textarea>
+  </div>
+  <button>回应</button>
+  <input type="hidden" name="id" value="<?= $this->c->id ?>">
+</form>
