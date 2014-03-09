@@ -68,7 +68,8 @@ class Sql
 
     public function alias($alias)
     {
-        $this->alias = "`$alias`";
+        $this->alias = "$alias";
+        return $this;
     }
 
     /**
@@ -359,8 +360,8 @@ class Sql
             $ti = $table;
             $table = "`$table`";
         } elseif (is_array($table)) {
-            $a = reset($table);
-            $ti = key($table);
+            $ti = reset($table);
+            $a = key($table);
             $table = "`$ti` AS `$a`";
         }
 

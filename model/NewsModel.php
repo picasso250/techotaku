@@ -36,9 +36,11 @@ class NewsModel extends Model {
 
     public function getListForIndex($n = 10, $p = 1) {
         $ret = $this
+            ->alias('n')
             ->limit($n)
             ->offset(($p-1)*$n)
-            ->orderBy(array('id' => 'DESC'))
+            ->join(array('u' => 'user'), array('u.id', '=', 'n.user'))
+            ->orderBy(array('n.id' => 'DESC'))
             ->findMany();
         return $ret;
     }
