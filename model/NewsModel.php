@@ -45,6 +45,7 @@ class NewsModel extends Model {
             ->offset(($p-1)*$n)
             ->leftJoin(array('u' => 'user'), array('u.id', '=', 'n.user'), array('username' => 'name'))
             ->orderBy(array('n.id' => 'DESC'))
+            ->where('pid', 0)
             ->findMany();
         return $ret;
     }

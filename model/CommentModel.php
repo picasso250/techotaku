@@ -12,7 +12,7 @@ use model\UserModel;
  */
 class CommentModel extends Model {
 
-    public $table = 'comment';
+    public $table = 'news';
 
     public function add($args) {
         $c = $this->create();
