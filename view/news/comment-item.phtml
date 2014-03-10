@@ -1,5 +1,5 @@
 <button class="upvote-btn" data-id=<?= $c->id ?>>赞</button>
-<div>
+<div class="comment-control-box">
   <a href=""><?= $c->user()->name ?></a>
   <span><?= $c->readableTime() ?></span>
   |
@@ -13,4 +13,4 @@
   <?php endif ?>
 </div>
 <span></span>
-<div><?= htmlspecialchars($c->content) ?></div>
+<div class="comment-content"><?= htmlspecialchars($c->content) ?></div>

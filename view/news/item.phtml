@@ -10,7 +10,8 @@
 <div class="detail-wrap">
   <span><?= $n->readableTime() ?></span>
   <span><?= htmlspecialchars($n->user()->name) ?> 发</span>
-  <span id="Point<?= $n->id ?>"><?= $n->point ?>分</span>
+  <span><span id="Point<?= $n->id ?>"><?= $n->point ?></span>分</span>
+  |
   <a href="/talk/<?= $n->id ?>">
     <?= $n->countComment() ? $n->countComment().'个' : '' ?>讨论
   </a>

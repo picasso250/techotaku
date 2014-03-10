@@ -1,24 +1,26 @@
-<div class="news-item">
-  <?php $this->renderBlock('news/item') ?>
-  <div class="detail"><?= htmlspecialchars($this->n->content) ?></div>
-</div>
-
-<form action="/comment/add" method="post">
-  <div>
-    <textarea name="content"></textarea>
+<div class="content-wrap">
+  <div class="news-item">
+    <?php $this->renderBlock('news/item') ?>
+    <div class="detail"><?= htmlspecialchars($this->n->content) ?></div>
   </div>
-  <button>添加评论</button>
-  <input type="hidden" name="id" value="<?= $this->n->id ?>">
-</form>
 
-<ul class="comment-list">
-  <?php foreach ($this->n->getCommentList() as $key => $value): ?>
-    <li>
-      <?php $this->renderBlock('news/comment-item-wrap', array(
-        'c' => $value,
-        'level' => 0,
-        'in_comment_page' => 0,
-      )) ?> 
-    </li>
-  <?php endforeach ?>
-</ul>
+  <form action="/comment/add" method="post" class="comment-form">
+    <div>
+      <textarea name="content" rows="7" cols="80"></textarea>
+    </div>
+    <button>添加评论</button>
+    <input type="hidden" name="id" value="<?= $this->n->id ?>">
+  </form>
+
+  <ul class="comment-list">
+    <?php foreach ($this->n->getCommentList() as $key => $value): ?>
+      <li>
+        <?php $this->renderBlock('news/comment-item-wrap', array(
+          'c' => $value,
+          'level' => 0,
+          'in_comment_page' => 0,
+        )) ?>
+      </li>
+    <?php endforeach ?>
+  </ul>
+</div>
