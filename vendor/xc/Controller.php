@@ -57,6 +57,10 @@ class Controller
         }
     }
 
+    /**
+     * get $_GET or $_POST parameter
+     * @return [type] [description]
+     */
     protected function param()
     {
         $num_args = func_num_args();

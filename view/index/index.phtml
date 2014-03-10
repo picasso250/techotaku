@@ -9,13 +9,14 @@
   <div class="login-btn-wrap">
     <?php if ($this->currentUserId): ?>
       <span><?= $this->currentUser->name ?></span>
+      |
       <a href="/login/out">登出</a>
     <?php else: ?>
       <a href="/login">登录</a>
     <?php endif ?>
   </div>
 
-  <div>logo</div>
+  <div class="logo-wrap"><img src="/img/logo.png"></div>
   <div class="nav">
     <a href="/welcome">欢迎</a>
     |

@@ -1,14 +1,15 @@
 <form method="post" action="/submit/save">
-	<div>
-		<div>
-			<input type="text" name="url" placeholder="url">
-		</div>
-		<div>
-			<input type="text" name="title" placeholder="title">
-		</div>
-		<div>
-			<textarea name="detail"></textarea>
-		</div>
-		<button type="submit">ok</button>
-	</div>
+  <div>
+    <div>
+      <input type="text" name="title" placeholder="title" value="<?= $this->param('title') ?>">
+    </div>
+    <div>
+      <input type="text" name="url" placeholder="url" value="<?= $this->param('url') ?>">
+    </div>
+    <div>或</div>
+    <div>
+      <textarea name="detail"></textarea>
+    </div>
+    <button type="submit">ok</button>
+  </div>
 </form>

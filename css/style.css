@@ -5,13 +5,31 @@
 /* all */
 body {
     background-color: #E9E7E2;
+    color: #7E7E7E;
+}
+a {
+    color: #7E7E7E;
+    text-decoration: none;
+}
+
+.login-btn-wrap {
+    font-size: small;
+}
+
+.detail-wrap {
+    padding-left: 43px;
+    font-size: small;
 }
 
 .nav {
+    display: inline-block;
     list-style-type: none;
+    color: #7E7E7E;
+    padding-left: 15px;
 }
-.nav li {
-    float: left;
+.nav a {
+    color: #7E7E7E;
+    text-decoration: none;
 }
 
 .news-list {
@@ -43,4 +61,17 @@ body {
 
 .comment-list {
     list-style-type: none;
+}
+
+.logo-wrap {
+    display: inline-block;
+    margin-top: 10px;
+}
+.logo-wrap img {
+}
+
+
+.index {
+    width: 1000px;
+    margin: auto;
 }
