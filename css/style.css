@@ -2,6 +2,9 @@
  * @author wangxiaochi
  */
 
+div, span, a, p {
+    font-family: Arial, "微软雅黑";
+}
 /* all */
 body {
     background-color: #E9E7E2;
@@ -74,6 +77,7 @@ textarea {
 
 .login-btn-wrap {
     float: right;
+    margin-top: 29px;
 }
 
 .comment-list {

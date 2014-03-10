@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 2014-03-09 11:07:53
+-- Generation Time: 2014-03-10 21:59:24
 -- 服务器版本： 5.6.16
 -- PHP Version: 5.4.26
 
@@ -26,27 +26,36 @@ SET time_zone = "+00:00";
 -- 表的结构 `news`
 --
 
-CREATE TABLE `news` (
+CREATE TABLE IF NOT EXISTS `news` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `title` varchar(200) NOT NULL,
-  `url` varchar(200) NOT NULL,
-  `host` varchar(200) NOT NULL,
-  `content` text NOT NULL,
+  `pid` int(10) unsigned DEFAULT '0',
+  `title` varchar(200) DEFAULT NULL,
+  `url` varchar(200) DEFAULT NULL,
+  `host` varchar(200) DEFAULT NULL,
+  `content` varchar(2000) DEFAULT NULL,
   `user` int(10) unsigned NOT NULL,
+  `point` int(10) unsigned NOT NULL DEFAULT '0',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+  PRIMARY KEY (`id`),
+  KEY `idx_pid` (`pid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
-CREATE TABLE `user` (
+
+--
+-- 表的结构 `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `password` varchar(255) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `point` int(10) unsigned NOT NULL DEFAULT '0',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+  PRIMARY KEY (`id`),
+  KEY `idx_name` (`name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

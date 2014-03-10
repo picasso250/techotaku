@@ -1,5 +1,7 @@
 <?php
 
+use model\UserModel;
+
 class Func
 {
 
@@ -24,7 +26,7 @@ class Func
         if (isset($config[$key])) {
             return $config[$key];
         }
-        return false;
+        return null;
     }
 
     public static function dispatch($controller, $action, $params)
@@ -36,6 +38,14 @@ class Func
             self::log($e->getMessage(), self::LOG_LEVEL_CRITICAL);
             $classname = "\\controller\\page404Controller";
             $c = new $classname;
+        }
+
+        $acl = self::config('action_control_list');
+        $userModel = new UserModel;
+        $currentUserId = $userModel->getCurrentUserId();
+        if (in_array("$controller/$action", $acl) && !$currentUserId) {
+            echo "javascript:location.href='/login';";
+            exit;
         }
         $c->view_root = __DIR__.'/view';
         $c->request = $params;

@@ -10,4 +10,8 @@ return array(
         // array('GET', '/about', array('Index', 'about')),
         array('GET', '/talk/[:id]', array('News' => 'view')),
     ),
+    'action_control_list' => array(
+        'Comment/add',
+        'Submit/save',
+    ),
 );
