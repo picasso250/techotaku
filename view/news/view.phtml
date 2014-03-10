@@ -1,10 +1,12 @@
 <div class="content-wrap">
+  <?php $this->renderBlock('layout/header') ?>
+  
   <div class="news-item">
     <?php $this->renderBlock('news/item') ?>
     <div class="detail"><?= htmlspecialchars($this->n->content) ?></div>
   </div>
 
-  <form action="/comment/add" method="post" class="comment-form">
+  <form role="ajax-form" data-success="location.reload();" action="/comment/add" method="post" class="comment-form">
     <div>
       <textarea name="content" rows="7" cols="80"></textarea>
     </div>
@@ -12,7 +14,7 @@
     <input type="hidden" name="id" value="<?= $this->n->id ?>">
   </form>
 
-  <ul class="comment-list">
+  <ul class="comment-list" style="margin-left: -37px;">
     <?php foreach ($this->n->getCommentList() as $key => $value): ?>
       <li>
         <?php $this->renderBlock('news/comment-item-wrap', array(

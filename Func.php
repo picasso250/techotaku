@@ -44,8 +44,12 @@ class Func
         $userModel = new UserModel;
         $currentUserId = $userModel->getCurrentUserId();
         if (in_array("$controller/$action", $acl) && !$currentUserId) {
-            echo "javascript:location.href='/login';";
-            exit;
+            if (self::isAjax()) {
+                echo "javascript:location.href='/login';";
+                exit;
+            } else {
+                self::redirect('/login');
+            }
         }
         $c->view_root = __DIR__.'/view';
         $c->request = $params;
@@ -65,5 +69,16 @@ class Func
             self::LOG_LEVEL_DEBUG => 'DEBUG',
         );
         return error_log(date('Y-m-d H:i:s')." [$map[$level]] $msg\n", 3, __DIR__.'/app.log');
+    }
+
+    public function isAjax()
+    {
+        return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
+    }
+
+    public function redirect($url)
+    {
+        header("Location: $url");
+        exit();
     }
 }

@@ -1,4 +1,4 @@
-<form method="post" action="/submit/save">
+<form role="ajax-form" data-success="location.href='/';" method="post" action="/submit/save">
   <div>
     <div>
       <input type="text" name="title" placeholder="title" value="<?= $this->param('title') ?>">

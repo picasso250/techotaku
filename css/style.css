@@ -18,14 +18,19 @@ textarea {
     border-color: #969696;
 }
 
+.btn-small {
+    font-size: small;
+}
+
+.header-inner {
+    margin-bottom: 20px;
+}
 .detail {
-    padding-left: 43px;
     padding-top: 20px;
     padding-bottom: 20px;
 }
 
 .comment-form {
-    padding-left: 40px;
 }
 
 .login-btn-wrap {
@@ -33,7 +38,6 @@ textarea {
 }
 
 .detail-wrap {
-    padding-left: 43px;
     font-size: small;
 }
 
@@ -59,12 +63,23 @@ textarea {
     margin-bottom: 10px;
 }
 
+.news-item {
+    position: relative;
+}
 .upvote-btn {
-    display: inline-block;
+    width: 20px;
+    opacity: 0.5;
+    position: absolute;
+    top: 12px;
+    left: -26px;
+}
+.upvote-btn:hover {
+    opacity: 0.8;
 }
 
 .news-item h2 {
     display: inline-block;
+    font-size: 1em;
 }
 .news-item h2 a {
     color: #582D2D;
@@ -86,6 +101,7 @@ textarea {
 .comment-list li {
     border-top: 1px dotted #C5BCBC;
     padding-top: 11px;
+    margin-top: 18px;
 }
 .comment-control-box {
     display: inline-block;

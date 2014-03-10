@@ -6,7 +6,7 @@
   <a href="/comment/reply?id=<?= $c->id ?>">链接</a>
   |
   <a href="">上级</a>
-  <?php if ($in_comment_page): $topic = $c->topic() ?>
+  <?php if ($this->in_comment_page): $topic = $c->topic() ?>
   |
   评：
   <a href="/topic/<?= $topic->id ?>"><?= $topic->title ?></a>

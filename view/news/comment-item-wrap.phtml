@@ -3,7 +3,7 @@
     'c' => $c,
     'in_comment_page' => 0,
   )) ?> 
-  <a href="/comment/reply?id=<?= $c->id ?>">回应</a>
+  <a href="/comment/reply?id=<?= $c->id ?>" class="btn-small">回应</a>
   <ul class="comment-list level<?= $this->level+1 ?>">
     <?php foreach ($this->c->getCommentList() as $key => $value): ?>
       <li>

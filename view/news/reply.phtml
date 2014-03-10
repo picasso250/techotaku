@@ -2,10 +2,22 @@
   <?php $this->renderBlock('news/comment-item') ?> 
 </div>
 
-<form action="/comment/add" method="post">
+<form role="ajax-form" data-success="location.href='/';" action="/comment/add" method="post">
   <div>
-    <textarea name="content"></textarea>
+    <textarea name="content" rows="7" cols="80"></textarea>
   </div>
   <button>回应</button>
   <input type="hidden" name="id" value="<?= $this->c->id ?>">
 </form>
+
+<ul class="comment-list" style="margin-left: -37px;">
+  <?php foreach ($this->c->getCommentList() as $key => $value): ?>
+    <li>
+      <?php $this->renderBlock('news/comment-item-wrap', array(
+        'c' => $value,
+        'level' => 0,
+        'in_comment_page' => 0,
+      )) ?>
+    </li>
+  <?php endforeach ?>
+</ul>
