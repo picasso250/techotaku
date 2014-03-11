@@ -33,7 +33,7 @@ class Func
     {
         $classname = '\controller\\'. $controller.'Controller';
         if (!file_exists(__DIR__.'/controller/'.$controller.'Controller.php')) { // 404
-            $classname = "\\controller\\Page404Controller";
+            self::dispatch404();
         }
 
         $acl = self::config('action_control_list');
@@ -51,9 +51,20 @@ class Func
         }
 
         $c = new $classname;
+        if (!in_array($action.'Action', get_class_methods($c))) {
+            self::dispatch404();
+        }
         $c->view_root = __DIR__.'/view';
         $c->request = $params;
         $c->{$action.'Action'}($params);
+        exit;
+    }
+    public static function dispatch404()
+    {
+        $classname = "\\controller\\Page404Controller";
+        $c = new $classname;
+        $c->view_root = __DIR__.'/view';
+        $c->{'indexAction'}();
         exit;
     }
     public static function log($msg, $level = self::LOG_LEVEL_INFORMATIONAL, $data = null)
