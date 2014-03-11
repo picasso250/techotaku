@@ -1,8 +1,10 @@
+<!-- extends: with_header -->
+
 <div>
   <?php $this->renderBlock('news/comment-item') ?> 
 </div>
 
-<form role="ajax-form" data-success="location.href='/';" action="/comment/add" method="post">
+<form role="ajax-form" data-success="location.href='/talk/<?= $this->c->topic()->id ?>';" action="/comment/add" method="post">
   <div>
     <textarea name="content" rows="7" cols="80"></textarea>
   </div>

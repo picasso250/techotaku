@@ -1,8 +1,11 @@
-<ul>
+<!-- extends: with_header -->
+<ul class="comment-list comment-list-standalone">
   <?php foreach ($this->comments as $key => $value): ?>
+  <li>
     <?php $this->renderBlock('news/comment-item', array(
       'c' => $value,
       'in_comment_page' => 1,
     )) ?>
+  </li>
   <?php endforeach ?>
 </ul>

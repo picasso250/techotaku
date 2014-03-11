@@ -14,8 +14,8 @@ a {
     color: #7E7E7E;
     text-decoration: none;
 }
-textarea {
-    border-color: #969696;
+textarea, input {
+    border: 1px solid #969696;
 }
 
 .btn-small {
@@ -129,4 +129,13 @@ textarea {
 
 .content-inner {
     margin-left: 52px;
+}
+
+.with-header-content {
+    margin-top: 33px;
+}
+
+.comment-list-standalone {
+    margin-left: 16px;
+    margin-top: 33px;
 }

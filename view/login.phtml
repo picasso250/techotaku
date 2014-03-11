@@ -1,9 +1,11 @@
+<!-- extends: master -->
+
 <h2>登录</h2>
-<form role="ajax-form" data-success="location.href='<?= $this->param('back') ?>';" action="/login/auth" method="post">
-  <div>
+<form role="ajax-form" data-success="location.href='<?= $this->param('back') ?: '/' ?>';" action="/login/auth" method="post">
+  <div class="form-control">
     <input type="text" name="username" placeholder="用户名">
   </div>
-  <div>
+  <div class="form-control">
     <input type="password" name="password" placeholder="密码">
   </div>
   <button type="submit">登录</button>

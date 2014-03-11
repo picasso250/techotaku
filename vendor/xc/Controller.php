@@ -159,7 +159,7 @@ class Controller
         $pathinfo = pathinfo($fname);
         if (isset($pathinfo['extension']) && $pathinfo['extension'] == 'md') {
             $content = file_get_contents($fname);
-            $content = preg_replace('/(\r\n|^)([^<].+?)\r\n/s', '<p>$2</p>'."\n", $content);
+            $content = preg_replace('/(\r?\n|^)([^<].+?)\r?\n/s', '<p>$2</p>'."\n", $content);
             $content = preg_replace('/\*\*(.+?)\*\*/s', '<strong>$1</strong>'."\n", $content);
             echo "$content\n";
         } else {

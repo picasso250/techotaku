@@ -1,15 +1,25 @@
-<form role="ajax-form" data-success="location.href='/';" method="post" action="/submit/save">
-  <div>
-    <div>
-      <input type="text" name="title" placeholder="title" value="<?= $this->param('title') ?>">
+<!-- extends: master -->
+<div class="content-wrap">
+  <div class="header-inner">
+    <div class="logo-wrap"><img src="/img/logo.png"></div>
+    <div class="nav">
+      提交新话题
     </div>
-    <div>
-      <input type="text" name="url" placeholder="url" value="<?= $this->param('url') ?>">
-    </div>
-    <div>或</div>
-    <div>
-      <textarea name="detail"></textarea>
-    </div>
-    <button type="submit">ok</button>
   </div>
-</form>
+
+  <form role="ajax-form" data-success="location.href='/';" method="post" action="/submit/save">
+    <div>
+      <div>
+        <input type="text" size="60" name="title" placeholder="标题" value="<?= $this->param('title') ?>">
+      </div>
+      <div>
+        <input type="text" size="60" name="url" placeholder="网址" value="<?= $this->param('url') ?>">
+      </div>
+      <div>或</div>
+      <div>
+        <textarea name="detail" placeholder="讨论" rows="7" cols="80"></textarea>
+      </div>
+      <button type="submit">ok</button>
+    </div>
+  </form>
+</div>
