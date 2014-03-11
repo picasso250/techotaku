@@ -1,11 +1,11 @@
-$.ajaxSetup({
-    success: function (ret) {
+$(document).ajaxComplete(function (event, xhr) {
+        // console.log('ajaxSetup',ret);
+        var ret = xhr.responseText;
         var match = /^javascript:(.+)/.exec(ret);
         if (match) {
             eval(match[1]);
         };
-    }
-});
+    });
 $(function () {
     $('.upvote-btn').click(function () {
         var id = $(this).data('id');
@@ -15,7 +15,6 @@ $(function () {
     });
     $('form[role=ajax-form').submit(function (e) {
         var $this = $(this);
-        console.log($this);
         var opts = {
             type: $(this).attr('method'),
             url: $(this).attr('action'),

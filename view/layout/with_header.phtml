@@ -1,0 +1,27 @@
+<!-- extends: master -->
+<div class="content-wrap">
+  <div class="login-btn-wrap">
+    <?php if ($this->currentUserId): ?>
+      <span><?= $this->currentUser->name ?></span>
+      |
+      <a href="/login/out">登出</a>
+    <?php else: ?>
+      <a href="/login">登录</a>
+    <?php endif ?>
+  </div>
+
+  <div class="header-inner">
+    <div class="logo-wrap"><img src="/img/logo.png"></div>
+    <div class="nav">
+      <a href="/welcome">欢迎</a>
+      |
+      <a href="/">最新</a>
+      |
+      <a href="/comment/">評論</a>
+      |
+      <a href="/submit">开新话题</a>
+    </div>
+  </div>
+
+  <div class="with-header-content"><?php $this->yieldView() ?></div>
+</div>

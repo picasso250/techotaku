@@ -12,12 +12,14 @@ class Controller
     public $view_root;
     public $config;
     public $app;
+    public $request;
 
     private $vars = array();
     private $lazies = array('names' => array(), 'values' => array());
 
     private $scripts = array();
     private $styles = array();
+    private $inner = array();
     
     public function __construct($app) {
         $this->view_root = $app->view_root;
@@ -120,40 +122,48 @@ class Controller
         echo json_encode($ret);
     }
 
-    public function layout($tpl)
-    {
-        $this->layout = $tpl;
-    }
-
     /**
      * 渲染视图
      * @param string $tpl 模版路径
      */
     public function renderView($tpl)
     {
-        if ($this->layout) {
-            $this->view = $tpl;
-            include "$this->view_root/$this->layout.phtml";
-            $this->layout = null;
+        $fname = "$this->view_root/$tpl.phtml";
+        $mdfname = "$this->view_root/$tpl.md";
+        if (file_exists($mdfname)) {
+            $this->_render($mdfname);
         } else {
-            $this->yieldView($tpl);
+            $this->_render($fname);
+        }
+    }
+    public function _render($fname)
+    {
+        $f = fopen($fname, 'r');
+        $currentLine = fgets($f);
+        if (preg_match('/^<!-- extends: (\w+) -->$/', $currentLine, $matches)) {
+            fclose($f);
+            $this->inner[] = $fname;
+            $layout = $matches[1];
+            $this->_render("$this->view_root/layout/$layout.phtml");
+        } else {
+            fclose($f);
+            $this->yieldView($fname);
         }
     }
 
-    public function yieldView($tpl = null)
+    public function yieldView($fname = null)
     {
-        if ($tpl === null) {
-            $tpl = $this->view;
+        if ($fname === null) {
+            $fname = array_pop($this->inner);
         }
-        $mdf = "$this->view_root/$tpl.md";
-        if (file_exists($mdf)) {
-            $content = file_get_contents($mdf);
+        $pathinfo = pathinfo($fname);
+        if (isset($pathinfo['extension']) && $pathinfo['extension'] == 'md') {
+            $content = file_get_contents($fname);
             $content = preg_replace('/(\r\n|^)([^<].+?)\r\n/s', '<p>$2</p>'."\n", $content);
             $content = preg_replace('/\*\*(.+?)\*\*/s', '<strong>$1</strong>'."\n", $content);
             echo "$content\n";
         } else {
-            $f = "$this->view_root/$tpl.phtml";
-            include $f;
+            include $fname;
         }
     }
 

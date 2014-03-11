@@ -1,28 +1,30 @@
 <div class="content-wrap">
   <?php $this->renderBlock('layout/header') ?>
   
-  <div class="news-item">
-    <?php $this->renderBlock('news/item') ?>
-    <div class="detail"><?= htmlspecialchars($this->n->content) ?></div>
-  </div>
-
-  <form role="ajax-form" data-success="location.reload();" action="/comment/add" method="post" class="comment-form">
-    <div>
-      <textarea name="content" rows="7" cols="80"></textarea>
+  <div class="content-inner">
+    <div class="news-item">
+      <?php $this->renderBlock('news/item') ?>
+      <div class="detail"><?= htmlspecialchars($this->n->content) ?></div>
     </div>
-    <button>添加评论</button>
-    <input type="hidden" name="id" value="<?= $this->n->id ?>">
-  </form>
 
-  <ul class="comment-list" style="margin-left: -37px;">
-    <?php foreach ($this->n->getCommentList() as $key => $value): ?>
-      <li>
-        <?php $this->renderBlock('news/comment-item-wrap', array(
-          'c' => $value,
-          'level' => 0,
-          'in_comment_page' => 0,
-        )) ?>
-      </li>
-    <?php endforeach ?>
-  </ul>
+    <form role="ajax-form" data-success="location.href=location.pathname;" action="/comment/add" method="post" class="comment-form">
+      <div>
+        <textarea name="content" rows="7" cols="80"><?= $this->param('content') ?></textarea>
+      </div>
+      <button>添加评论</button>
+      <input type="hidden" name="id" value="<?= $this->n->id ?>">
+    </form>
+
+    <ul class="comment-list" style="margin-left: -37px;">
+      <?php foreach ($this->n->getCommentList() as $key => $value): ?>
+        <li>
+          <?php $this->renderBlock('news/comment-item-wrap', array(
+            'c' => $value,
+            'level' => 0,
+            'in_comment_page' => 0,
+          )) ?>
+        </li>
+      <?php endforeach ?>
+    </ul>
+  </div>
 </div>

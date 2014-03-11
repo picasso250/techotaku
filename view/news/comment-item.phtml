@@ -1,5 +1,5 @@
 <button class="upvote-btn" data-id=<?= $c->id ?>>赞</button>
-<div class="comment-control-box">
+<div class="comment-control-box" id="Item<?= $c->id ?>">
   <a href=""><?= $c->user()->name ?></a>
   <span><?= $c->readableTime() ?></span>
   |

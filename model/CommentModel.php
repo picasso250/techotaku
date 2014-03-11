@@ -21,6 +21,7 @@ class CommentModel extends Model {
         $c->user = $userModel->getCurrentUserId();
         $c->created = $this->now();
         $c->save();
+        return $c;
     }
 
     public function getList() {

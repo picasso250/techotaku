@@ -29,8 +29,6 @@ class BaseController extends \xc\Controller
         $this->page = new \stdClass;
         $this->page->description = 'todo';
         $this->page->keywords = array('todo','扮演');
-
-        $this->layout('layout/master');
     }
 
 }

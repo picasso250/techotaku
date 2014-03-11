@@ -32,12 +32,8 @@ class Func
     public static function dispatch($controller, $action, $params)
     {
         $classname = '\controller\\'. $controller.'Controller';
-        try {
-            $c = new $classname;
-        } catch (Exception $e) {
-            self::log($e->getMessage(), self::LOG_LEVEL_CRITICAL);
-            $classname = "\\controller\\page404Controller";
-            $c = new $classname;
+        if (!file_exists(__DIR__.'/controller/'.$controller.'Controller.php')) { // 404
+            $classname = "\\controller\\Page404Controller";
         }
 
         $acl = self::config('action_control_list');
@@ -45,12 +41,16 @@ class Func
         $currentUserId = $userModel->getCurrentUserId();
         if (in_array("$controller/$action", $acl) && !$currentUserId) {
             if (self::isAjax()) {
-                echo "javascript:location.href='/login';";
+                $uri = $_SERVER['HTTP_REFERER'].'?'.http_build_query($_REQUEST);
+                $query = http_build_query(array('back' => $uri));
+                echo "javascript:location.href='/login?$query';";
                 exit;
             } else {
                 self::redirect('/login');
             }
         }
+
+        $c = new $classname;
         $c->view_root = __DIR__.'/view';
         $c->request = $params;
         $c->{$action.'Action'}($params);
@@ -71,14 +71,15 @@ class Func
         return error_log(date('Y-m-d H:i:s')." [$map[$level]] $msg\n", 3, __DIR__.'/app.log');
     }
 
-    public function isAjax()
+    public static function isAjax()
     {
         return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
     }
 
-    public function redirect($url)
+    public static function redirect($url)
     {
         header("Location: $url");
         exit();
     }
+
 }

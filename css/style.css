@@ -118,10 +118,15 @@ textarea {
     margin-top: 10px;
 }
 .logo-wrap img {
+    width: 34px;
 }
 
 
 .content-wrap {
     width: 1000px;
     margin: auto;
+}
+
+.content-inner {
+    margin-left: 52px;
 }

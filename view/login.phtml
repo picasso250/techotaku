@@ -1,5 +1,5 @@
 <h2>登录</h2>
-<form role="ajax-form" data-success="location.href='/';" action="/login/auth" method="post">
+<form role="ajax-form" data-success="location.href='<?= $this->param('back') ?>';" action="/login/auth" method="post">
   <div>
     <input type="text" name="username" placeholder="用户名">
   </div>
