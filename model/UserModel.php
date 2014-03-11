@@ -30,13 +30,20 @@ class UserModel extends Model {
     public function add($args)
     {
         $username = $args['username'];
+        if (empty($username)) {
+            throw new \Exception("用户名不能为空", 1);
+        }
+        $password = $args['password'];
+        if (empty($password)) {
+            throw new \Exception("密码不能为空", 1);
+        }
         $u = $this->where('name', $username)->findOne();
         if ($u) {
-            throw new \Exception("$username exists", 1);
+            throw new \Exception("$username 已经存在，请换一个用户名", 1);
         }
         $u = $this->create();
         $u->name = $args['username'];
-        $u->password = sha1($args['password']);
+        $u->password = sha1($password);
         $u->created = $this->now();
         $u->save();
         return $u;

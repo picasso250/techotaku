@@ -1,4 +1,6 @@
-<img class="upvote-btn" data-id="<?= $n->id ?>" title="赞" src="/img/arrow_up.png">
+<a href="<?= $this->currentUserId ? 'javascript:void(0);' : '/login?'.http_build_query(array('back' => '/', 'msg' => '你需要登录才能投票')) ?>">
+  <img class="upvote-btn" data-id="<?= $n->id ?>" title="赞" src="/img/arrow_up.png">
+</a>
 <h2>
   <a href="<?= $n->getUrl() ?>"><?= htmlspecialchars($n->title) ?></a>
 </h2>

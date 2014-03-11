@@ -1,0 +1,35 @@
+<!-- extends: with_header -->
+<form id="MyForm" method="post" action="/me/save" role="ajax-form" data-success="location.reload();">
+  <dl>
+    <dt>用户名：</dt>
+    <dd><?= $this->currentUser->name ?></dd>
+  </dl>
+  <dl>
+    <dt>创建于：</dt>
+    <dd><?= $this->currentUser->created ?></dd>
+  </dl>
+  <dl>
+    <dt>业力：</dt>
+    <dd><?= $this->currentUser->karma ?></dd>
+  </dl>
+  <dl>
+    <dt>介绍：</dt>
+    <dd><textarea name="intro"><?= $this->currentUser->intro ?></textarea></dd>
+  </dl>
+  <dl>
+    <dt>邮箱：</dt>
+    <dd><input type="text" name="email" value="<?= $this->currentUser->email ?>"></dd>
+  </dl>
+  <div style="margin-left: 114px; margin-bottom: 18px;">
+    <div>
+      <a href="/me/password">更改密码</a>
+    </div>
+    <div>
+      <a href="/me/submit">我提交的话题</a>
+    </div>
+    <div>
+      <a href="/me/comment">我的讨论</a>
+    </div>
+  </div>
+  <button type="submit">更新信息</button>
+</form>

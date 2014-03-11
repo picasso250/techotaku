@@ -33,7 +33,7 @@ $routers = Func::config('routers');
 foreach ($routers as $value) {
     list($method, $url, $ca) = $value;
     $regex = preg_replace_callback('/\[:(\w+)\]/', function ($m) {
-        return '(?<'.$m[1].'>[\w]+)';
+        return '(?<'.$m[1].'>\w+)';
     }, $url);
     $regex = '/^'.str_replace('/', '\\/', $regex).'$/';
     if ($_SERVER['REQUEST_METHOD'] == $method && preg_match($regex, $_SERVER['PATH_INFO'], $matches)) {

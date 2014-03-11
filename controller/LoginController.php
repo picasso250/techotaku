@@ -18,7 +18,12 @@ class LoginController extends BaseController
 
     public function addAction()
     {
-        $u = $this->userModel->add($this->request);
+        try {
+            $u = $this->userModel->add($this->request);
+        } catch (\Exception $e) {
+            $this->renderJson(1, $e->getMessage());
+        }
+        $_SESSION['user'] = $u->id;
         $this->renderJson(0, $u->toArray());
     }
 

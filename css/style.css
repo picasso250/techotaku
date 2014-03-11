@@ -7,7 +7,7 @@ div, span, a, p {
 }
 /* all */
 body {
-    background-color: #E9E7E2;
+    background-color: #F5F5F5;
     color: #7E7E7E;
 }
 a {
@@ -84,6 +84,9 @@ textarea, input {
 .news-item h2 a {
     color: #582D2D;
 }
+.news-item h2 a:visited {
+    color: #707070;
+}
 
 .news-item .site {
 }
@@ -138,4 +141,20 @@ textarea, input {
 .comment-list-standalone {
     margin-left: 16px;
     margin-top: 33px;
+}
+
+.msg {
+    margin-top: 33px;
+}
+
+#MyForm dt {
+    width: 113px;
+}
+#MyForm dd {
+}
+#MyForm dt, #MyForm dd {
+    display: inline-block;
+    margin: 0;
+    border-bottom: 1px solid #DADADA;
+    margin-bottom: 11px;
 }

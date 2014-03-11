@@ -63,25 +63,12 @@ class Controller
      * get $_GET or $_POST parameter
      * @return [type] [description]
      */
-    protected function param()
+    protected function param($key = null)
     {
-        $num_args = func_num_args();
-        if ($num_args == 1) {
-            $args = func_get_arg(0);
-            if (is_array($args)) {
-                $names = $args;
-                return $this->paramMulti($names);
-            } elseif (is_string($args)) {
-                $name = $args;
-                return $this->_param($name, null);
-            }
-        } elseif ($num_args == 2) {
-            $name = func_get_arg(0);
-            $default = func_get_arg(1);
-            return $this->_param($name, $default);
-        } else {
-            return $_REQUEST;
+        if ($key && isset($this->request[$key])) {
+            return $this->request[$key];
         }
+        return $_REQUEST;
     }
     
     protected function paramMulti($names)
@@ -117,9 +104,10 @@ class Controller
     {
         $ret['code'] = $code;
         if (func_num_args() == 2) {
-            $ret[$code == 0 ? 'data' : 'error'] = func_get_arg(1);
+            $ret[$code == 0 ? 'data' : 'msg'] = func_get_arg(1);
         }
         echo json_encode($ret);
+        exit();
     }
 
     /**

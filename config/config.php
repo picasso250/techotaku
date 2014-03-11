@@ -7,11 +7,12 @@
 return array(
     // 网址=>控制器
     'routers' => array(
-        // array('GET', '/about', array('Index', 'about')),
         array('GET', '/talk/[:id]', array('News' => 'view')),
+        array('GET', '/user/[:name]', array('User' => 'view')),
     ),
     'action_control_list' => array(
         'Comment/add',
         'Submit/save',
+        'Upvote/index',
     ),
 );

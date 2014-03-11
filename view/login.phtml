@@ -1,5 +1,9 @@
 <!-- extends: master -->
 
+<?php if ($this->param('msg')): ?>
+  <div class="msg"><?= $this->param('msg') ?></div>
+<?php endif ?>
+
 <h2>登录</h2>
 <form role="ajax-form" data-success="location.href='<?= $this->param('back') ?: '/' ?>';" action="/login/auth" method="post">
   <div class="form-control">

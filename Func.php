@@ -55,7 +55,7 @@ class Func
             self::dispatch404();
         }
         $c->view_root = __DIR__.'/view';
-        $c->request = $params;
+        $c->request = array_merge($_REQUEST, $params);
         $c->{$action.'Action'}($params);
         exit;
     }
