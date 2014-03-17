@@ -52,7 +52,24 @@ class NewsModel extends Model {
 
     public function upvote($id)
     {
-        self::execute("update $this->table set point=point+1 where id=?", array($id));
+        $model = new UserModel;
+        $user = $model->getCurrentUserId();
+        if (!$user) {
+            return 0;
+        }
+        $where = array(
+                'user' => $user,
+                'news' => $id,
+            );
+        $vote = self::forTable('vote')
+            ->where($where)->findOne();
+        if (!$vote) {
+            $vote = self::forTable('vote')->create();
+            $where['created'] = $this->now();
+            $vote->setMulti($where);
+            $vote->save();
+            self::execute("update $this->table set point=point+1 where id=?", array($id));
+        }
         return $this->findOne($id)->point;
     }
 

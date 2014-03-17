@@ -9,6 +9,7 @@ $(document).ajaxComplete(function (event, xhr) {
 $(function () {
     $('.upvote-btn').click(function () {
         var id = $(this).data('id');
+        $(this).hide();
         $.post('/upvote', {id: id}, function (ret) {
             $('#Point'+id).text(ret.data);
         }, 'json');

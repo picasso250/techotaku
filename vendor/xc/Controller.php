@@ -128,7 +128,7 @@ class Controller
     {
         $f = fopen($fname, 'r');
         $currentLine = fgets($f);
-        if (preg_match('/^<!-- extends: (\w+) -->$/', $currentLine, $matches)) {
+        if (preg_match('/^<!-- extends: (\w+) -->/', $currentLine, $matches)) {
             fclose($f);
             $this->inner[] = $fname;
             $layout = $matches[1];

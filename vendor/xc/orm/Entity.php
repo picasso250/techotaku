@@ -45,7 +45,9 @@ class Entity
     public function populate($arr)
     {
         $this->data = $arr;
-        $this->id = $arr['id'];
+        if (isset($arr['id'])) {
+            $this->id = $arr['id'];
+        }
         return $this;
     }
 
