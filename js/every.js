@@ -7,6 +7,13 @@ $(document).ajaxComplete(function (event, xhr) {
         };
     });
 $(function () {
+    $('.mask').each(function () {
+        var h = $(this).parent().find('.thing').height()+'px';
+        $(this).css('line-height', h);
+        if ($(this).data('mask-disabled')) {
+            $(this).hide();
+        };
+    });
     $('.upvote-btn').click(function () {
         var id = $(this).data('id');
         $(this).hide();

@@ -7,13 +7,16 @@
       <div class="detail"><?= htmlspecialchars($this->n->content) ?></div>
     </div>
 
-    <form role="ajax-form" data-success="location.href=location.pathname;" action="/comment/add" method="post" class="comment-form">
-      <div>
-        <textarea name="content" rows="7" cols="80"><?= $this->param('content') ?></textarea>
-      </div>
-      <button>添加评论</button>
-      <input type="hidden" name="id" value="<?= $this->n->id ?>">
-    </form>
+    <div class="mask-wrap">
+      <form role="ajax-form" data-success="location.href=location.pathname;" action="/comment/add" method="post" class="comment-form thing">
+        <div>
+          <textarea name="content" rows="7" cols="80"><?= $this->param('content') ?></textarea>
+        </div>
+        <button>添加评论</button>
+        <input type="hidden" name="id" value="<?= $this->n->id ?>">
+      </form>
+      <div class="mask" data-mask-disabled="<?= $this->currentUserId ?>" id="FormMask">您需要 <a href="/login">登录</a> 才能回复</div>
+    </div>
 
     <ul class="comment-list" style="margin-left: -37px;">
       <?php foreach ($this->n->getCommentList() as $key => $value): ?>
