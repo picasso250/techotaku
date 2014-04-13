@@ -68,7 +68,10 @@ class Controller
         if ($key && isset($this->request[$key])) {
             return $this->request[$key];
         }
-        return $_REQUEST;
+        if ($key === null) {
+            return $_REQUEST;
+        }
+        return null;
     }
     
     protected function paramMulti($names)
